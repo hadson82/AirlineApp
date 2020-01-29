@@ -2,6 +2,10 @@ package com.airlane.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,7 +41,61 @@ public class AddPassenger extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		request.setAttribute("errors", false);
+		
+		String firstName = request.getParameter("first-name");
+		System.out.println("firstName: " + firstName);
+		
+		if(firstName.length() == 0){
+			System.out.println("empty first error");
+			request.setAttribute("errors", true);
+			request.setAttribute("firstName errors", true);
+		}
+		
+		String lastName = request.getParameter("last-name");
+		System.out.println("lastName: " + lastName);
+		
+		if(lastName.length() == 0){
+			System.out.println("empty last error");
+			request.setAttribute("errors", true);
+			request.setAttribute("lastName errors", true);
+		}
+		
+		String dob_raw = request.getParameter("dob");
+		
+		String dobArray [] = dob_raw.split("\\/");
+		
+		String pattern = "^\\d{1,2}\\/\\d{1,2}\\/\\d{4}$";
+		Pattern r = Pattern.compile(pattern);
+		
+		Matcher m = r.matcher(dob_raw);
+		
+		if(m.find()){
+			
+			String month = dobArray[0];
+			String day = dobArray[1];
+			String year = dobArray[2];
+			
+			Calendar cal = Calendar.getInstance();
+			
+			cal.set(Calendar.YEAR, Integer.parseInt(year));
+			cal.set(Calendar.MONTH, Integer.parseInt(month));
+			cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
+			
+			Date dob = cal.getTime();
+			
+		}
+		else {
+			System.out.println("Invalid date of birth");
+			request.setAttribute("errors", true);
+			request.setAttribute("date format error", true);
+		}
+		
+
+		
+		String gender = request.getParameter("gender");
+		System.out.println("gender: " + gender);
 	}
 
 }
