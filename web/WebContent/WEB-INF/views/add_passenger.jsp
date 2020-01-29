@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>World Adventures Airlines</title>
+<link rel="stylesheet" href="resources/css/normalize.css">
+<link rel="stylesheet" href="resources/css/theme.css">
 </head>
 <body>
 
@@ -46,13 +48,6 @@
 					<option value="Male">Male</option>
 					<option value="Female">Female</option>
 				</select>
-			
-			</div>
-			
-			<div class="inputField">
-			
-				<label for="first-name" class="inputLabel">First name: </label> 
-				<input name="first-name" type="text">
 			
 			</div>
 			
