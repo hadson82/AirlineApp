@@ -1,4 +1,4 @@
-package com.airlane.service;
+package com.airline.service;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;

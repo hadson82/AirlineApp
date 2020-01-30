@@ -1,4 +1,4 @@
-package com.airlane.controllers;
+package com.airline.controllers;
 
 import java.util.ArrayList;
 
