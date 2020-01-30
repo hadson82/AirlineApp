@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.airline.service.FlightLocal;
+import com.airline.service.FlightRemote;
 import com.airline.service.FlightService;
 
 /**
@@ -25,6 +26,9 @@ public class FlightDetails extends HttpServlet {
 	
 	@EJB
 	private FlightLocal fs;
+	
+	@EJB
+	private FlightRemote fsRemote; // bean lives on remote server
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,7 +44,8 @@ public class FlightDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		out.println("The flight details info servlet has been called...");
-		out.println("Flight details: " + fs.getFrom() + " " + fs.getTo());
+		out.println("Flight details: " + fs.getFrom() + " " + fs.getTo()); // takes less resources
+		out.println("Flight details: " + fsRemote.getFrom() + " " + fsRemote.getTo()); // takes more resources, operate slower
 
 		
 	}
