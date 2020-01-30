@@ -6,7 +6,7 @@ import javax.ejb.Stateful;
  * Session Bean implementation class FlightService
  */
 @Stateful(name = "flightStatefull")
-public class FlightServiceStatefulBean implements FlightLocal_ejb8 {
+public class FlightServiceStatefulBean implements FlightLocal_ejb10 {
 
     /**
      * Default constructor. 
