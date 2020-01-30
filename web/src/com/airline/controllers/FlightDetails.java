@@ -13,9 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.airline.service.FlightLocal;
-import com.airline.service.FlightRemote;
-import com.airline.service.FlightService;
+import com.airline.service.FlightLocal_ejb8;
+import com.airline.service.FlightServiceStatelessBean;
 
 /**
  * Servlet implementation class FlightDetails
@@ -24,11 +23,20 @@ import com.airline.service.FlightService;
 public class FlightDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@EJB
-	private FlightLocal fs;
+	@EJB(beanName = "flightStateless")
+	private FlightLocal_ejb8 fs;
 	
-	@EJB
-	private FlightRemote fsRemote; // bean lives on remote server
+	@EJB(beanName = "flightStateless")
+	private FlightLocal_ejb8 fs2;
+	
+	
+	@EJB(beanName = "flightStatefull")
+	private FlightLocal_ejb8 fsStatefull;
+	
+	@EJB(beanName = "flightStatefull")
+	private FlightLocal_ejb8 fsStatefull2;
+	
+
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,10 +52,23 @@ public class FlightDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		out.println("The flight details info servlet has been called...");
-		out.println("Flight details: " + fs.getFrom() + " " + fs.getTo()); // takes less resources
-		out.println("Flight details: " + fsRemote.getFrom() + " " + fsRemote.getTo()); // takes more resources, operate slower
-
 		
+		// Stateless
+		out.println("Flight details: " + fs.getFrom() + " to " + fs.getTo());
+		
+		fs2.setFrom("Paris");
+		fs2.setTo("Rome");
+		
+		out.println("Flight details: " + fs.getFrom() + " to " + fs.getTo());
+		
+		// Statefull
+		out.println("Flight details: " + fsStatefull.getFrom() + " to " + fsStatefull.getTo());
+
+		fsStatefull2.setFrom("Paris");
+		fsStatefull2.setTo("Rome");
+		
+		out.println("Flight details: " + fsStatefull.getFrom() + " to " + fsStatefull.getTo());
+		out.println("Flight details: " + fsStatefull2.getFrom() + " to " + fsStatefull2.getTo());
 	}
 
 	/**

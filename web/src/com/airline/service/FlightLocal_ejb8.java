@@ -1,9 +1,9 @@
 package com.airline.service;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
-@Remote
-public interface FlightRemote {
+@Local
+public interface FlightLocal_ejb8 {
 	
 	public Integer getId();
 	public void setId(Integer id);
