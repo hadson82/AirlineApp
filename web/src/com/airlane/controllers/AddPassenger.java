@@ -120,9 +120,11 @@ public class AddPassenger extends HttpServlet {
 		}
 		else {
 			ServletContext sc = this.getServletContext();
+			synchronized (this){ // only one thread at a time make changes
 			ArrayList<Passenger> pList = (ArrayList<Passenger>)sc.getAttribute("passengers");
 			pList.add(p);
 			sc.setAttribute("passengers", pList);
+			}
 			response.sendRedirect("");
 		}
 	}
