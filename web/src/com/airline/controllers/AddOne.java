@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.airline.service.CounterBean;
+import com.airline.service.CounterStatefulBean;
 
 /**
  * Servlet implementation class AddOne
@@ -21,6 +22,9 @@ public class AddOne extends HttpServlet {
 	
 	@EJB
 	CounterBean cb;
+	
+	@EJB
+	CounterStatefulBean cbStateful;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,9 +39,12 @@ public class AddOne extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    PrintWriter out = response.getWriter();
-	    out.println("The current count value is: " + cb.getCount());
+	    out.println("The current count value for the SINGLETON bean is: " + cb.getCount());
+	    out.println("The current count value for the STATEFUL bean is: " + cbStateful.getCount());
 	    cb.addOneToCount();
-	    out.println("The count was incremented by one. The current count value is: " + cb.getCount());
+	    cbStateful.addOneToCount();
+	    out.println("The count was incremented by one. The current count value for the SINGLETON bean is: " + cb.getCount());
+	    out.println("The count was incremented by one. The current count value for the STATEFUL bean is: " + cbStateful.getCount());
 	}
 
 	/**
