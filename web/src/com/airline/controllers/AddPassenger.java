@@ -19,7 +19,7 @@ import com.airline.service.PassengerService;
 /**
  * Servlet implementation class AddPassenger2
  */
-@WebServlet("/AddPassenger2")
+@WebServlet("/AddPassenger")
 public class AddPassenger extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
