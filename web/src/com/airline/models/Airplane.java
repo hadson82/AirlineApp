@@ -27,6 +27,17 @@ public class Airplane implements Serializable {
 	private String modelName;
 	
 	private Integer seatingCapacity;
+	
+	@OneToOne(mappedBy = "airplaneDetail")
+	private Flight flight;
+	
+	public Flight getFlight() {
+		return flight;
+	}
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
 
 	public Integer getId() {
 		return id;
