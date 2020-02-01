@@ -1,16 +1,48 @@
 package com.airline.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Passenger {
+import javax.persistence.*;
+
+/**
+ * Entity implementation class for Entity: Passenger2
+ *
+ */
+@Entity
+public class Passenger implements Serializable {
+
+	@Transient
+	private static final long serialVersionUID = 1L;
+
+	public Passenger() {
+		super();
+	}
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	
 	private String firstName;
 	
 	private String lastName;
 	
+	@Temporal(TemporalType.DATE)
 	private Date dob;
 	
+	@Enumerated(EnumType.STRING)
 	private Gender gender;
+	
+	@Enumerated(EnumType.STRING)
+	private FlightClass flightClass;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -44,12 +76,14 @@ public class Passenger {
 		this.gender = gender;
 	}
 
-	@Override
-	public String toString() {
-		return "Passenger [firstName=" + firstName + ", lastName=" + lastName
-				+ ", dob=" + dob + ", gender=" + gender + "]";
+	public FlightClass getFlightClass() {
+		return flightClass;
+	}
+
+	public void setFlightClass(FlightClass flightClass) {
+		this.flightClass = flightClass;
 	}
 	
 	
-
+   
 }
