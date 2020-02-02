@@ -41,13 +41,10 @@ public class Passengers extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<Passenger> pList = (List<Passenger>) ps.getPassengers();
-		request.setAttribute("passenger_list", pList);
-		
-		PrintWriter out = response.getWriter();
-		
-		out.println("List of passengers will be displayed here...");
-		// RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/passengers_list.jsp");
-		// view.forward(request, response);
+		request.setAttribute("passengers_list", pList);
+
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/passengers_list.jsp");
+		view.forward(request, response);
 		
 	}
 
