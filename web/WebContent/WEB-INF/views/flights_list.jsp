@@ -39,6 +39,53 @@
 					<td><%=fList.get(i).getFlightTime() %></td>
 					<td><%=fList.get(i).getPrice() %></td>
 					
+					<td><%=fList.get(i).getAirplaneDetail().getModelName() %></td>
+					<td><%=fList.get(i).getAirplaneDetail().getSeatingCapacity() %></td>
+					
+					<td>
+					<%
+					
+						if(fList.get(i).getPilots() !=null){
+							
+					%>
+						<%=fList.get(i).getPilots().size() %> pilots
+					<%
+						}
+						else{
+					%>
+						No pilots yet	
+					<%
+						}
+					%>
+					</td>
+					
+					<td>
+					<%
+					
+						if(fList.get(i).getPilots() !=null){
+							List<Pilot> pList = (List<Pilot>)fList.get(i).getPilots();
+							
+							for(Integer j=0; j < pList.size(); j++){
+							
+					%>
+						
+						<%=
+						
+							(j+1) + ") " + pList.get(j).getFirstName() + " " + pList.get(j).getLastName()
+							+ " (" + pList.get(j).getPilotRank() + ")" + "<br />"
+						
+						%>
+						
+					<%
+					
+							} // for
+					
+						} // if
+					
+					%>
+					
+					
+					</td>
 				
 				</tr>
 		<%
