@@ -16,6 +16,7 @@
 	<h1>List of Flights</h1>
 	<table>
 		<tr>
+			<th>Id</th>
 			<th>First Name</th>
 			<th>Last Name</th>
 			<th>Date of birth</th>
@@ -24,12 +25,12 @@
 		
 		<%
 		
-			List<Passenger> pList = (List<Passenger>) request.getAttribute("passengers_list");
+			List<Passenger> pList = (List<Passenger>)request.getAttribute("passengers_list");
 		
 			for(Integer i= 0; i<pList.size(); i++){
 		%>
 				<tr>
-				
+					<td><%=pList.get(i).getId() %></td>
 					<td><%=pList.get(i).getFirstName() %></td>
 					<td><%=pList.get(i).getLastName() %></td>
 					<td><%=pList.get(i).getDob() %></td>
@@ -39,7 +40,7 @@
 				
 				<tr>
 				
-					<td colspan="4">No flights tickets yet.</td>
+					<td colspan="5">No flights tickets yet.</td>
 				
 				</tr>
 						
