@@ -36,6 +36,7 @@ public class FlightService {
     	
     }
     
+    // add pilot to the flight
     public void addPilotToFlight(String pilotId, String flightId){
     	
     	TypedQuery<Flight> fQuery = em.createNamedQuery("Flight.findById", Flight.class);
@@ -58,6 +59,14 @@ public class FlightService {
     	
     	p.setFlightForPilot(f);
     	
+    	
+    }
+    
+    public List<Flight> getFlights(){
+    	
+    	TypedQuery<Flight> query = em.createQuery("SELECT f FROM Flight f", Flight.class);
+    	List<Flight> results = query.getResultList();
+    	return results;
     	
     }
 
