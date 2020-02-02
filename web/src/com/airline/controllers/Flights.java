@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +44,8 @@ public class Flights extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		out.println("List of flights will be displayed here...");
-		
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/flights_list.jsp");
+		view.forward(request, response);
 		
 	}
 
