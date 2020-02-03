@@ -43,6 +43,18 @@ public class Flight implements Serializable {
 	@OneToMany(mappedBy = "flightForPilot")
 	private List<Pilot> pilots;
 	
+	@ManyToMany
+	@JoinTable(name = "f_p_join", joinColumns = @JoinColumn(name="flight_fk"), inverseJoinColumns = @JoinColumn(name="passenger_fk"))
+	private List<Passenger> passengers;
+	
+
+	public List<Passenger> getPassengers() {
+		return passengers;
+	}
+
+	public void setPassengers(List<Passenger> passengers) {
+		this.passengers = passengers;
+	}
 
 	public List<Pilot> getPilots() {
 		return pilots;
@@ -105,7 +117,8 @@ public class Flight implements Serializable {
 		return "Flight [id=" + id + ", flightOrigin=" + flightOrigin
 				+ ", flightDestination=" + flightDestination + ", price="
 				+ price + ", flightTime=" + flightTime + ", airplaneDetail="
-				+ airplaneDetail + ", pilots=" + pilots + "]";
+				+ airplaneDetail + ", pilots=" + pilots + ", passengers="
+				+ passengers + "]";
 	}
 	
 	
