@@ -69,5 +69,9 @@ public class FlightService {
     	return results;
     	
     }
+    
+    public void addPassengerToFlight(String passengerId, String flightId){
+    	
+    }
 
 }

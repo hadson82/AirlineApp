@@ -35,6 +35,11 @@ public class PassengerService {
     	
     }
     
+    public void addFlightTicketToPassenger(String flightId, String passengerId){
+    	
+    	
+ 
+    }
     
     public List<Passenger> getPassengers(){
     	TypedQuery<Passenger> query = em.createQuery("SELECT p FROM Passenger p", Passenger.class);
