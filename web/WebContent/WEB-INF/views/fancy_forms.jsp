@@ -21,7 +21,7 @@
 
 	<h1>Add flight and airplane</h1>
 
-	<form method="POST" action="">
+	<form method="POST" action="AddFlight">
 
 		From:  
 
