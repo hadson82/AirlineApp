@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import com.airline.models.Flight;
 import com.airline.models.Passenger;
+import com.airline.models.Pilot;
 
 /**
  * Session Bean implementation class PassengerService
@@ -32,6 +34,7 @@ public class PassengerService {
     	em.persist(p);
     	
     }
+    
     
     public List<Passenger> getPassengers(){
     	TypedQuery<Passenger> query = em.createQuery("SELECT p FROM Passenger p", Passenger.class);
