@@ -40,7 +40,23 @@
 				
 				<tr>
 				
-					<td colspan="5">No flights tickets yet.</td>
+					<td colspan="5">
+						<%
+							if(pList.get(i).getFlights().size()>0){
+								List<Flight> fList = (List<Flight>)pList.get(i).getFlights();
+								
+								for(Integer k = 0; k < fList.size(); k++){
+						%>
+							<%= k+1 %>) <%= fList.get(k).getFlightOrigin() %> to <%= fList.get(k).getFlightDestination() %>@ <%= fList.get(k).getFlightTime() %>
+						<%
+								}
+							}else {
+						%>
+						 No flight tickets yet.
+						<%
+							}
+						%>
+					</td>
 				
 				</tr>
 						
